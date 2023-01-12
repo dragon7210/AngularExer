@@ -11,6 +11,7 @@ import { FirstPageComponent } from './commponents/first-page/first-page.componen
 import { SecondPageComponent } from './commponents/second-page/second-page.component'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatInputModule } from '@angular/material/input'
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

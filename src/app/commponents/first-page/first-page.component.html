@@ -1,5 +1,5 @@
 <div class="w-full p-4">
-  <table class="w-[80%] text-center mx-auto">
+  <table class="w-[80%] text-center mx-auto mt-12">
     <thead>
       <tr class="h-[60px] bg-gray-500">
         <th>No</th>
@@ -45,12 +45,12 @@
   *ngIf="delModal"
   class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 justify-center items-center flex"
 >
-  <div class="relative w-auto my-6">
+  <div class="relative my-6 w-[600px]">
     <div
       class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white"
     >
       <div class="relative p-6 flex-auto">
-        <p class="my-4 text-slate-500 text-lg leading-relaxed">
+        <p class="my-4 text-slate-500 text-[30px] leading-relaxed">
           Are you delete?
         </p>
       </div>
@@ -81,8 +81,9 @@
     <div
       class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white"
     >
+      <p class="text-[30px] m-0 px-8 pt-6">Edit Modal</p>
       <form [formGroup]="editForm">
-        <div class="relative p-6 flex-auto">
+        <div class="relative px-6 flex-auto">
           <div class="mt-4">
             <input
               type="text"

@@ -1,17 +1,8 @@
-<mat-toolbar class="bg-[blue]">
+<div class="bg-[blue]">
   <div class="w-full mx-20 flex">
-    <span class="mr-[40px]">My Logo</span>
-    <div class="mx-[20px]" *ngFor="let ele of header; index as i">
+    <div class="mr-[40px] my-auto">My Logo</div>
+    <div class="mx-[20px] py-4" *ngFor="let ele of header; index as i">
       <span class="cursor-pointer" (click)="selectPage(i)">{{ ele }}</span>
     </div>
-    <div class="w-full flex justify-end">
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
   </div>
-</mat-toolbar>
+</div>
