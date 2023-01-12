@@ -1,4 +1,4 @@
 <app-header></app-header>
-<app-first-page></app-first-page>
-<app-second-page></app-second-page>
+<app-first-page *ngIf="headerSel === 0"></app-first-page>
+<app-second-page *ngIf="headerSel === 1"></app-second-page>
 <router-outlet></router-outlet>

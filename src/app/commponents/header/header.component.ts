@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { HeaderService } from 'src/app/service/header.service'
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core'
 })
 export class HeaderComponent {
   header = ['First', 'Second']
-  selectNum: Number = -1
+
+  constructor(private headerService: HeaderService) {}
 
   selectPage(i: any) {
-    this.selectNum = i
+    this.headerService.headerSel.next(i)
   }
 }
