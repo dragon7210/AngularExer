@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-first-page',
@@ -25,11 +24,10 @@ export class FirstPageComponent implements OnInit {
   editModal = false
   delModal = false
   delSel = -1
+  editSel = -1
+  editValidator = false
 
-  constructor(
-    private modalService: NgbModal,
-    private formBuilder: FormBuilder,
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.createForm()
@@ -47,12 +45,24 @@ export class FirstPageComponent implements OnInit {
   openEditModal(i: any) {
     this.editModal = !this.editModal
     this.editData = this.dataSource[i]
+    this.editSel = i
   }
   closeEditModal() {
     this.editModal = !this.editModal
   }
   edit() {
-    this.editModal = !this.editModal
+    if (this.editForm.valid) {
+      this.dataSource[this.editSel] = {
+        position: this.editForm.value.position,
+        name: this.editForm.value.name,
+        weight: this.editForm.value.weight,
+        symbol: this.editForm.value.symbol,
+      }
+      this.editModal = !this.editModal
+    } else {
+      this.editValidator = true
+    }
+    console.log(this.editValidator)
   }
   openDelModal(i: any) {
     this.delModal = !this.delModal

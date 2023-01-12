@@ -18,7 +18,6 @@
           {{ element.position }}
         </td>
         <td>
-          <div>12</div>
           {{ element.name }}
         </td>
         <td>{{ element.weight }}</td>
@@ -78,13 +77,86 @@
   *ngIf="editModal"
   class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 justify-center items-center flex"
 >
-  <div class="relative w-auto my-6">
+  <div class="relative my-6 w-[600px]">
     <div
       class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white"
     >
-      <div class="relative p-6 flex-auto">
-        <input value="{{ editData.position }}" />
-      </div>
+      <form [formGroup]="editForm">
+        <div class="relative p-6 flex-auto">
+          <div class="mt-4">
+            <input
+              type="text"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+              value="{{ editData.position }}"
+              placeholder="Number"
+              formControlName="position"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (editForm.controls['position'].touched || editValidator) &&
+                editForm.controls['position'].errors
+              "
+            >
+              Position is required.
+            </span>
+          </div>
+          <div class="mt-4">
+            <input
+              type="text"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+              value="{{ editData.name }}"
+              placeholder="Name"
+              formControlName="name"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (editForm.controls['name'].touched || editValidator) &&
+                editForm.controls['name'].errors
+              "
+            >
+              Name is required.
+            </span>
+          </div>
+          <div class="mt-4">
+            <input
+              type="text"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+              value="{{ editData.weight }}"
+              placeholder="Weight"
+              formControlName="weight"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (editForm.controls['weight'].touched || editValidator) &&
+                editForm.controls['weight'].errors
+              "
+            >
+              Weight is required.
+            </span>
+          </div>
+          <div class="mt-4">
+            <input
+              type="text"
+              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+              value="{{ editData.symbol }}"
+              placeholder="Symbol"
+              formControlName="symbol"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (editForm.controls['symbol'].touched || editValidator) &&
+                editForm.controls['symbol'].errors
+              "
+            >
+              Symbol is required.
+            </span>
+          </div>
+        </div>
+      </form>
       <div
         class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"
       >
