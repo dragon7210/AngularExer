@@ -22,6 +22,9 @@ export class FirstPageComponent implements OnInit {
   ]
   editData: any = {}
   editForm!: FormGroup
+  editModal = false
+  delModal = false
+  delSel = -1
 
   constructor(
     private modalService: NgbModal,
@@ -41,20 +44,25 @@ export class FirstPageComponent implements OnInit {
     })
   }
 
-  openEditModal(i: any, content: any) {
+  openEditModal(i: any) {
+    this.editModal = !this.editModal
     this.editData = this.dataSource[i]
-    this.modalService.open(content).result.then((result) => {
-      if (result === 'ok') {
-        this.dataSource.splice(i, 1)
-      }
-    })
   }
-
-  openDelModal(i: any, content: any) {
-    this.modalService.open(content).result.then((result) => {
-      if (result === 'ok') {
-        this.dataSource.splice(i, 1)
-      }
-    })
+  closeEditModal() {
+    this.editModal = !this.editModal
+  }
+  edit() {
+    this.editModal = !this.editModal
+  }
+  openDelModal(i: any) {
+    this.delModal = !this.delModal
+    this.delSel = i
+  }
+  closeDelModal() {
+    this.delModal = !this.delModal
+  }
+  delete() {
+    this.dataSource.splice(this.delSel, 1)
+    this.delModal = !this.delModal
   }
 }
