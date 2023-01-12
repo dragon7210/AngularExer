@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs'
   providedIn: 'root',
 })
 export class HeaderService {
-  public headerSel = new BehaviorSubject(-1)
+  public headerSel = new BehaviorSubject(0)
   constructor() {}
 
   getHeaderSel(): Observable<any> {

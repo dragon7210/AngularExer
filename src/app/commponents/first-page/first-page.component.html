@@ -1,1 +1,123 @@
-<p>first-page works!</p>
+<div class="w-full p-4">
+  <table class="w-[80%] text-center mx-auto">
+    <thead>
+      <tr class="h-[60px] bg-gray-500">
+        <th>No</th>
+        <th>Name</th>
+        <th>Weight</th>
+        <th>Symbol</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let element of dataSource; index as i"
+        class="cursor-pointer h-[50px] bg-gray-300 hover:bg-slate-400"
+      >
+        <td>{{ element.position }}</td>
+        <td>{{ element.name }}</td>
+        <td>{{ element.weight }}</td>
+        <td>{{ element.symbol }}</td>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openEditModal(i, EditModal)"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            class="ml-4"
+            (click)="openDelModal(i, DelModal)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #EditModal let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.close('cancel')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <mat-form-field class="example-full-width mr-4">
+        <mat-label>Position</mat-label>
+        <input
+          matInput
+          placeholder="Position"
+          value="{{ editData.position }}"
+          formControlName="position"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="name"
+          value="{{ editData.name }}"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width mr-4">
+        <mat-label>Weight</mat-label>
+        <input
+          matInput
+          placeholder="Weight"
+          value="{{ editData.weight }}"
+          formControlName="weight"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Symbol</mat-label>
+        <input
+          matInput
+          placeholder="Symbol"
+          value="{{ editData.symbol }}"
+          formControlName="symbol"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)="modal.close('ok')">
+      Edit
+    </button>
+    <button class="btn btn-outline-dark" (click)="modal.close('cancel')">
+      Cancel
+    </button>
+  </div>
+</ng-template>
+<ng-template #DelModal let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.close('cancel')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="dateOfBirth">Are you delete?</label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)="modal.close('ok')">
+      Delete
+    </button>
+    <button class="btn btn-outline-dark" (click)="modal.close('cancel')">
+      Cancel
+    </button>
+  </div>
+</ng-template>

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AppComponent implements OnInit {
   title = 'test'
-  headerSel: any = -1
+  headerSel: Number = 0
 
   constructor(private headerService: HeaderService) {}
 
