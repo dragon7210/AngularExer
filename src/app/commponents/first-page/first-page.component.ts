@@ -62,7 +62,6 @@ export class FirstPageComponent implements OnInit {
     } else {
       this.editValidator = true
     }
-    console.log(this.editValidator)
   }
   openDelModal(i: any) {
     this.delModal = !this.delModal
