@@ -1,8 +1,15 @@
 <div class="bg-[blue]">
-  <div class="w-full mx-20 flex">
-    <div class="mr-[40px] my-auto">My Logo</div>
-    <div class="mx-[20px] py-4" *ngFor="let ele of header; index as i">
-      <span class="cursor-pointer" (click)="selectPage(i)">{{ ele }}</span>
+  <div class="w-full px-20 flex">
+    <div>
+      <img src="assets/logo-hhs.jpg" alt="logo" class="h-[70px]" />
+    </div>
+    <div
+      class="py-2 rounded-lg mx-2 my-auto px-5 hover:bg-blue-400"
+      *ngFor="let ele of header; index as i"
+    >
+      <span class="cursor-pointer text-white" (click)="selectPage(i)">{{
+        ele
+      }}</span>
     </div>
   </div>
 </div>
