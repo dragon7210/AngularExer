@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
+import { ToastService, AngularToastifyModule } from 'angular-toastify'
 
 @NgModule({
   declarations: [
@@ -35,8 +36,9 @@ import { MatNativeDateModule } from '@angular/material/core'
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    AngularToastifyModule,
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { HeaderService } from './../../service/header.service'
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { ToastService } from 'angular-toastify'
 
 @Component({
   selector: 'app-first-page',
@@ -28,7 +29,10 @@ export class FirstPageComponent implements OnInit {
   editSel = -1
   editValidator = false
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private _toastService: ToastService,
+  ) {}
 
   ngOnInit() {}
 
@@ -49,6 +53,7 @@ export class FirstPageComponent implements OnInit {
   }
   closeEditModal() {
     this.editModal = !this.editModal
+    this._toastService.warn('Unsuccess')
     this.editValidator = false
   }
   edit() {
@@ -59,6 +64,7 @@ export class FirstPageComponent implements OnInit {
         weight: this.editForm.value.weight,
         symbol: this.editForm.value.symbol,
       }
+      this._toastService.info('Success')
       this.editModal = !this.editModal
     } else {
       this.editValidator = true
@@ -74,5 +80,6 @@ export class FirstPageComponent implements OnInit {
   delete() {
     this.dataSource.splice(this.delSel, 1)
     this.delModal = !this.delModal
+    this._toastService.info('Success Delete')
   }
 }
