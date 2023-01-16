@@ -1,3 +1,4 @@
+import { HeaderService } from './../../service/header.service'
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
@@ -29,16 +30,14 @@ export class FirstPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
-    this.createForm()
-  }
+  ngOnInit() {}
 
-  createForm() {
+  createForm(i: any) {
     this.editForm = this.formBuilder.group({
-      position: ['', Validators.required],
-      name: ['', Validators.required],
-      weight: ['', Validators.required],
-      symbol: ['', Validators.required],
+      position: [this.dataSource[i].position, Validators.required],
+      name: [this.dataSource[i].name, Validators.required],
+      weight: [this.dataSource[i].weight, Validators.required],
+      symbol: [this.dataSource[i].symbol, Validators.required],
     })
   }
 
@@ -46,9 +45,11 @@ export class FirstPageComponent implements OnInit {
     this.editModal = !this.editModal
     this.editData = this.dataSource[i]
     this.editSel = i
+    this.createForm(i)
   }
   closeEditModal() {
     this.editModal = !this.editModal
+    this.editValidator = false
   }
   edit() {
     if (this.editForm.valid) {

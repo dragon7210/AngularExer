@@ -12,6 +12,8 @@ import { SecondPageComponent } from './commponents/second-page/second-page.compo
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -31,8 +33,10 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     FormsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
