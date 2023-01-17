@@ -20,9 +20,7 @@ export class FirstPageComponent implements OnInit {
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ]
-  editData: any = {}
   editForm!: FormGroup
-  editModal = false
   delModal = false
   delSel = -1
   editSel = -1
@@ -44,31 +42,27 @@ export class FirstPageComponent implements OnInit {
     })
   }
 
-  openEditModal(i: any) {
-    this.editModal = !this.editModal
-    this.editData = this.dataSource[i]
-    this.editSel = i
-    this.createForm(i)
-  }
-  closeEditModal() {
-    this.editModal = !this.editModal
-    this._toastService.warn('Unsuccess')
-    this.editValidator = false
-  }
-  edit() {
-    if (this.editForm.valid) {
-      this.dataSource[this.editSel] = {
-        position: this.editForm.value.position,
-        name: this.editForm.value.name,
-        weight: this.editForm.value.weight,
-        symbol: this.editForm.value.symbol,
+  Edit(i: any) {
+    if (this.editSel === i) {
+      if (this.editForm.valid) {
+        this.dataSource[i] = {
+          position: this.editForm.value.position,
+          name: this.editForm.value.name,
+          weight: this.editForm.value.weight,
+          symbol: this.editForm.value.symbol,
+        }
+        this._toastService.info('Success')
+        this.editSel = -1
+        return
+      } else {
+        this.editValidator = true
       }
-      this._toastService.info('Success')
-      this.editModal = !this.editModal
     } else {
-      this.editValidator = true
+      this.createForm(i)
     }
+    this.editSel = i
   }
+
   openDelModal(i: any) {
     this.delModal = !this.delModal
     this.delSel = i

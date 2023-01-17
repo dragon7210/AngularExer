@@ -1,46 +1,116 @@
 <div class="w-full p-4 bg-slate-200 h-[calc(100vh-70px)]">
-  <table class="w-[80%] text-center mx-auto mt-12">
-    <thead>
-      <tr class="h-[60px] bg-gray-500">
-        <th>No</th>
-        <th>Name</th>
-        <th>Weight</th>
-        <th>Symbol</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let element of dataSource; index as i"
-        class="cursor-pointer h-[60px] bg-gray-300 hover:bg-slate-400"
-      >
-        <td>
-          {{ element.position }}
-        </td>
-        <td>
-          {{ element.name }}
-        </td>
-        <td>{{ element.weight }}</td>
-        <td>{{ element.symbol }}</td>
-        <td>
-          <button
-            class="bg-[blue] rounded-lg px-4 py-2"
-            (click)="openEditModal(i)"
-          >
-            <p class="text-white">Edit</p>
-          </button>
-          <button
-            class="bg-[red] rounded-lg ml-4 px-4 py-2"
-            (click)="openDelModal(i)"
-          >
-            <p class="text-white">Delete</p>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <form [formGroup]="editForm">
+    <table class="w-[80%] text-center mx-auto mt-12">
+      <thead>
+        <tr class="h-[60px] bg-gray-500">
+          <th>No</th>
+          <th>Name</th>
+          <th>Weight</th>
+          <th>Symbol</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let element of dataSource; index as i"
+          class="cursor-pointer h-[60px] bg-gray-300 hover:bg-slate-400"
+        >
+          <td>
+            <p *ngIf="editSel !== i">{{ element.position }}</p>
+            <div class="mt-4" *ngIf="editSel === i">
+              <input
+                type="text"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                formControlName="position"
+                placeholder="Number"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (editForm.controls['position'].touched || editValidator) &&
+                  editForm.controls['position'].errors
+                "
+              >
+                Position is required.
+              </span>
+            </div>
+          </td>
+          <td>
+            <p *ngIf="editSel !== i">{{ element.name }}</p>
+            <div class="mt-4" *ngIf="editSel === i">
+              <input
+                type="text"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                formControlName="name"
+                placeholder="Name"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (editForm.controls['name'].touched || editValidator) &&
+                  editForm.controls['name'].errors
+                "
+              >
+                Name is required.
+              </span>
+            </div>
+          </td>
+          <td>
+            <p *ngIf="editSel !== i">{{ element.weight }}</p>
+            <div class="mt-4" *ngIf="editSel === i">
+              <input
+                type="text"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                formControlName="weight"
+                placeholder="Weight"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (editForm.controls['weight'].touched || editValidator) &&
+                  editForm.controls['weight'].errors
+                "
+              >
+                Weight is required.
+              </span>
+            </div>
+          </td>
+          <td>
+            <p *ngIf="editSel !== i">{{ element.symbol }}</p>
+            <div class="mt-4" *ngIf="editSel === i">
+              <input
+                type="text"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                formControlName="symbol"
+                placeholder="Symbol"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (editForm.controls['symbol'].touched || editValidator) &&
+                  editForm.controls['symbol'].errors
+                "
+              >
+                Symbol is required.
+              </span>
+            </div>
+          </td>
+          <td>
+            <button class="bg-[blue] rounded-lg px-4 py-2" (click)="Edit(i)">
+              <p class="text-white">Edit</p>
+            </button>
+            <button
+              class="bg-[red] rounded-lg ml-4 px-4 py-2"
+              (click)="openDelModal(i)"
+            >
+              <p class="text-white">Delete</p>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </div>
-
 <div
   *ngIf="delModal"
   class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 justify-center items-center flex"
@@ -68,106 +138,6 @@
           (click)="delete()"
         >
           Delete
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  *ngIf="editModal"
-  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 justify-center items-center flex"
->
-  <div class="relative my-6 w-[600px]">
-    <div
-      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white"
-    >
-      <p class="text-[30px] m-0 px-8 pt-6">Edit Modal</p>
-      <form [formGroup]="editForm">
-        <div class="relative px-6 flex-auto">
-          <div class="mt-4">
-            <input
-              type="text"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
-              formControlName="position"
-              placeholder="Number"
-            />
-            <span
-              class="text-danger"
-              *ngIf="
-                (editForm.controls['position'].touched || editValidator) &&
-                editForm.controls['position'].errors
-              "
-            >
-              Position is required.
-            </span>
-          </div>
-          <div class="mt-4">
-            <input
-              type="text"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
-              placeholder="Name"
-              formControlName="name"
-            />
-            <span
-              class="text-danger"
-              *ngIf="
-                (editForm.controls['name'].touched || editValidator) &&
-                editForm.controls['name'].errors
-              "
-            >
-              Name is required.
-            </span>
-          </div>
-          <div class="mt-4">
-            <input
-              type="text"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
-              placeholder="Weight"
-              formControlName="weight"
-            />
-            <span
-              class="text-danger"
-              *ngIf="
-                (editForm.controls['weight'].touched || editValidator) &&
-                editForm.controls['weight'].errors
-              "
-            >
-              Weight is required.
-            </span>
-          </div>
-          <div class="mt-4">
-            <input
-              type="text"
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
-              placeholder="Symbol"
-              formControlName="symbol"
-            />
-            <span
-              class="text-danger"
-              *ngIf="
-                (editForm.controls['symbol'].touched || editValidator) &&
-                editForm.controls['symbol'].errors
-              "
-            >
-              Symbol is required.
-            </span>
-          </div>
-        </div>
-      </form>
-      <div
-        class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"
-      >
-        <button
-          class="text-white rounded-lg mx-4 bg-slate-500 px-4 py-2"
-          (click)="closeEditModal()"
-        >
-          Close
-        </button>
-        <button
-          class="bg-emerald-500 text-white mx-4 rounded-lg px-4 py-2"
-          (click)="edit()"
-        >
-          Edit
         </button>
       </div>
     </div>
