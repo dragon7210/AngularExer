@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { SecondPageComponent } from './commponents/second-page/second-page.component'
 import { FirstPageComponent } from './commponents/first-page/first-page.component'
 
-const routes: Routes = [
-  { path: 'first', component: FirstPageComponent },
-  { path: 'second', component: SecondPageComponent },
-]
+const routes: Routes = []
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
