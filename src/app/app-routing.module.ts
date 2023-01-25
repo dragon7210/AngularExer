@@ -4,8 +4,8 @@ import { SecondPageComponent } from './commponents/second-page/second-page.compo
 import { FirstPageComponent } from './commponents/first-page/first-page.component'
 
 const routes: Routes = [
-  { path: '/first', component: FirstPageComponent },
-  { path: '/second', component: SecondPageComponent },
+  { path: 'first', component: FirstPageComponent },
+  { path: 'second', component: SecondPageComponent },
 ]
 
 @NgModule({
