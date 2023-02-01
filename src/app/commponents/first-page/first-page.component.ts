@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ToastService } from 'angular-toastify'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-first-page',
@@ -29,6 +30,7 @@ export class FirstPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _toastService: ToastService,
+    private location: Location,
   ) {}
 
   ngOnInit() {}
@@ -64,6 +66,7 @@ export class FirstPageComponent implements OnInit {
   }
 
   openDelModal(i: any) {
+    this.location.replaceState(`/del/${i}`)
     this.delModal = !this.delModal
     this.delSel = i
   }
