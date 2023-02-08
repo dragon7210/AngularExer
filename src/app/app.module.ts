@@ -15,7 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import { ToastService, AngularToastifyModule } from 'angular-toastify'
-import { ModalComponent } from './components/modal/modal.component'
+import { ModalComponent } from './components/modal/modal.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ModalComponent } from './components/modal/modal.component'
     FirstPageComponent,
     SecondPageComponent,
     ModalComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

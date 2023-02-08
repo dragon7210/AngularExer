@@ -7,7 +7,7 @@ import { Component } from '@angular/core'
 })
 export class HeaderComponent {
   header = ['First', 'Second']
-  url: string = ''
+  url: string = 'first'
 
   constructor() {}
 

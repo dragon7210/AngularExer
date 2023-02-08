@@ -7,13 +7,12 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router'
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  name: any = {}
+  id: any = {}
 
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
     this.route.params.subscribe((event: any) => {
-      this.name = event.id
-      console.log(this.name)
+      this.id = event.id
     })
   }
 }

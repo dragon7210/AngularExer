@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 import { FirstPageComponent } from './components/first-page/first-page.component'
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'second',
     component: SecondPageComponent,
   },
+  { path: '**', component: PageNotFoundComponent },
 ]
 
 @NgModule({
