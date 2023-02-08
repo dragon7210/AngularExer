@@ -15,6 +15,10 @@ const routes: Routes = [
     component: FirstPageComponent,
   },
   {
+    path: '',
+    component: FirstPageComponent,
+  },
+  {
     path: 'second',
     component: SecondPageComponent,
   },

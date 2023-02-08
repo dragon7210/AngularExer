@@ -1,8 +1,10 @@
 <div class="bg-[blue]">
   <div class="w-full px-20 flex">
-    <div>
-      <img src="assets/logo-hhs.jpg" alt="logo" class="h-[70px]" />
-    </div>
+    <a routerLink="/">
+      <div>
+        <img src="assets/logo-hhs.jpg" alt="logo" class="h-[70px]" />
+      </div>
+    </a>
     <div
       class="py-2 rounded-lg mx-2 my-auto px-5 hover:bg-blue-400"
       *ngFor="let element of header; index as i"
@@ -10,8 +12,8 @@
       <a routerLink="/{{ url }}">
         <span class="cursor-pointer text-white" (click)="select(i)">{{
           element
-        }}</span></a
-      >
+        }}</span>
+      </a>
     </div>
   </div>
 </div>
