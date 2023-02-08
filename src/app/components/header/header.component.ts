@@ -18,6 +18,5 @@ export class HeaderComponent {
     if (i === 1) {
       this.url = 'second'
     }
-    console.log(this.url)
   }
 }
