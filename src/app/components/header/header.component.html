@@ -5,11 +5,9 @@
     </div>
     <div
       class="py-2 rounded-lg mx-2 my-auto px-5 hover:bg-blue-400"
-      *ngFor="let ele of header; index as i"
+      *ngFor="let element of header; index as i"
     >
-      <span class="cursor-pointer text-white" (click)="selectPage(i)">{{
-        ele
-      }}</span>
+      <span class="cursor-pointer text-white">{{ element }}</span>
     </div>
   </div>
 </div>

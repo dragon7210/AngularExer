@@ -10,8 +10,4 @@ export class HeaderComponent {
   header = ['First', 'Second']
 
   constructor(private headerService: HeaderService) {}
-
-  selectPage(i: any) {
-    this.headerService.headerSel.next(i)
-  }
 }
