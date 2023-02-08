@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'test'
-  headerSel: Number = 0
-
   constructor(private headerService: HeaderService) {}
 
   ngOnInit() {}

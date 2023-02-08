@@ -7,7 +7,11 @@
       class="py-2 rounded-lg mx-2 my-auto px-5 hover:bg-blue-400"
       *ngFor="let element of header; index as i"
     >
-      <span class="cursor-pointer text-white">{{ element }}</span>
+      <a routerLink="/{{ url }}">
+        <span class="cursor-pointer text-white" (click)="select(i)">{{
+          element
+        }}</span></a
+      >
     </div>
   </div>
 </div>

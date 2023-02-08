@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { HeaderService } from 'src/app/service/header.service'
 
 @Component({
   selector: 'app-header',
@@ -8,6 +7,17 @@ import { HeaderService } from 'src/app/service/header.service'
 })
 export class HeaderComponent {
   header = ['First', 'Second']
+  url: string = ''
 
-  constructor(private headerService: HeaderService) {}
+  constructor() {}
+
+  select(i: number) {
+    if (i === 0) {
+      this.url = 'first'
+    }
+    if (i === 1) {
+      this.url = 'second'
+    }
+    console.log(this.url)
+  }
 }
