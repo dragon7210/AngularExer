@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { ToastService } from 'angular-toastify'
-import { Location } from '@angular/common'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-first-page',
@@ -9,7 +7,10 @@ import { Location } from '@angular/common'
   styleUrls: ['./first-page.component.scss'],
 })
 export class FirstPageComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+  openModal() {
+    this.router.navigateByUrl('modal/3')
+  }
 }
