@@ -11,6 +11,6 @@ export class FirstPageComponent implements OnInit {
 
   ngOnInit() {}
   openModal() {
-    this.router.navigateByUrl('modal/3')
+    this.router.navigate(['/modal/3'], { queryParams: { order: 'popular' } })
   }
 }
