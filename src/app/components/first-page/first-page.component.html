@@ -30,10 +30,16 @@
                 Edit
               </button>
               <button
-                class="bg-[red] px-4 py-2 rounded-lg text-white"
+                class="bg-[red] px-4 py-2 rounded-lg mr-5 text-white"
                 (click)="delete(i)"
               >
                 Delete
+              </button>
+              <button
+                class="bg-[green] px-4 py-2 rounded-lg text-white"
+                (click)="openModal(i)"
+              >
+                Open Modal
               </button>
             </td>
           </ng-container>

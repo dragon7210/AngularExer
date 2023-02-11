@@ -1,4 +1,4 @@
-import { Router } from '@angular/router'
+
 import { Component, OnInit } from '@angular/core'
 
 @Component({
@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./second-page.component.scss'],
 })
 export class SecondPageComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
   ngOnInit() {}
-  openModal() {
-    this.router.navigate(['/modal'], { queryParams: { order: '1' } })
-  }
+ 
 }
