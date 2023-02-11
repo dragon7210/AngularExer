@@ -14,9 +14,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
+import { CalendarModule } from 'primeng/calendar'
+import { DropdownModule } from 'primeng/dropdown';
 import { ToastService, AngularToastifyModule } from 'angular-toastify'
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './components/modal/modal.component'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -34,13 +37,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    CalendarModule,
     MatInputModule,
     FormsModule,
+    DropdownModule,
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
     AngularToastifyModule,
+    NgbModule,
   ],
   providers: [MatDatepickerModule, ToastService],
   bootstrap: [AppComponent],
