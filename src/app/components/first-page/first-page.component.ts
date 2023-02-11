@@ -44,15 +44,17 @@ export class FirstPageComponent implements OnInit {
   }
   edit(i: number) {
     this.selEdit = i
+  }
+  cancel() {
+    this.addRecord = false
+  }
+  save(i: number) {
     this.dataArray[i].title = (this.tableForm.controls[
       'editForm'
     ] as any).controls.title.value
     this.dataArray[i].content = (this.tableForm.controls[
       'editForm'
     ] as any).controls.content.value
+    this.selEdit = -1
   }
-  cancel() {
-    this.addRecord = false
-  }
-  save() {}
 }
