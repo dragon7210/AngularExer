@@ -21,6 +21,7 @@ export class FirstPageComponent implements OnInit {
   }
 
   add() {
+    this.selEdit = -1
     this.addRecord = true
     this.tableForm = this.fb.group({
       addForm: this.fb.group({
