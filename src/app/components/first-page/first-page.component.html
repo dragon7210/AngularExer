@@ -29,7 +29,9 @@
               >
                 Edit
               </button>
-              <button class="bg-[red] px-4 py-2 rounded-lg">Delete</button>
+              <button class="bg-[red] px-4 py-2 rounded-lg" (click)="delete(i)">
+                Delete
+              </button>
             </td>
           </ng-container>
           <ng-container *ngIf="selEdit === i" formGroupName="editForm">

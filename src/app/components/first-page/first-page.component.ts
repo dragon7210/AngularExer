@@ -64,4 +64,7 @@ export class FirstPageComponent implements OnInit {
     ] as any).controls.content.value
     this.selEdit = -1
   }
+  delete(i: number) {
+    this.dataArray.splice(i, 1)
+  }
 }
