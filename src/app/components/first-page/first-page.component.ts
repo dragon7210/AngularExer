@@ -10,18 +10,17 @@ import { Router } from '@angular/router'
 export class FirstPageComponent implements OnInit {
   addRecord = false
   tableForm!: FormGroup
+  dataArray = [{ title: 'john', content: 'test' }]
+  temp: any = []
+  selEdit = -1
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    @Inject(FormBuilder) fb: FormBuilder,
-  ) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder) {
     this.tableForm = fb.group({
       addForm: fb.group({
         title: ['', Validators.required],
         content: ['', Validators.required],
       }),
-      editFrom: fb.group({
+      editForm: fb.group({
         title: ['', Validators.required],
         content: ['', Validators.required],
       }),
@@ -34,6 +33,26 @@ export class FirstPageComponent implements OnInit {
     this.addRecord = true
   }
   put() {
-    console.log(this.tableForm)
+    this.temp.title = (this.tableForm.controls[
+      'addForm'
+    ] as any).controls.title.value
+    this.temp.content = (this.tableForm.controls[
+      'addForm'
+    ] as any).controls.content.value
+    this.dataArray.push(this.temp)
+    this.addRecord = false
   }
+  edit(i: number) {
+    this.selEdit = i
+    this.dataArray[i].title = (this.tableForm.controls[
+      'editForm'
+    ] as any).controls.title.value
+    this.dataArray[i].content = (this.tableForm.controls[
+      'editForm'
+    ] as any).controls.content.value
+  }
+  cancel() {
+    this.addRecord = false
+  }
+  save() {}
 }
