@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 // import 'rxjs/add/operator/filter'
 // import { filter } from 'rxjs'
 
@@ -10,11 +10,14 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class ModalComponent implements OnInit {
   id: number = 0
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: any) => {
       const temp = { ...params.params }
       this.id = temp.order
     })
+  }
+  back() {
+    this.router.navigate(['/first'])
   }
 }
