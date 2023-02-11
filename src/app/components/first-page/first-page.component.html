@@ -36,16 +36,16 @@
           </ng-container>
           <ng-container *ngIf="selEdit === i" formGroupName="editForm">
             <td>{{ i + 1 }}</td>
-            <td>
+            <td class="px-2">
               <input
                 formControlName="title"
-                class="border-[2px] border-[black] py-2 w-full"
+                class="py-2 px-4 w-full focus:outline-none rounded-md"
               />
             </td>
-            <td>
+            <td class="px-2">
               <input
                 formControlName="content"
-                class="border-[2px] border-[black] py-2 w-full"
+                class="py-2 px-4 w-full focus:outline-none rounded-md"
               />
             </td>
             <td>
@@ -70,16 +70,16 @@
           formGroupName="addForm"
         >
           <td></td>
-          <td class="px-3">
+          <td class="px-2">
             <input
               formControlName="title"
-              class="border-[2px] border-[black] py-2 w-full"
+              class="py-2 px-4 w-full focus:outline-none rounded-md"
             />
           </td>
-          <td class="px-3">
+          <td class="px-2">
             <input
               formControlName="content"
-              class="border-[2px] border-[black] py-2 w-full"
+              class="py-2 px-4 w-full focus:outline-none rounded-md"
             />
           </td>
           <td class="flex justify-center">
