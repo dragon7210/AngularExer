@@ -53,6 +53,12 @@
               >
                 Save
               </button>
+              <button
+                class="bg-[red] px-4 py-2 rounded-lg"
+                (click)="editCancel()"
+              >
+                Cancel
+              </button>
             </td>
           </ng-container>
         </tr>
@@ -81,7 +87,7 @@
             >
               Put
             </button>
-            <button class="bg-[red] px-4 py-2 rounded-lg" (click)="cancel()">
+            <button class="bg-[red] px-4 py-2 rounded-lg" (click)="addCancel()">
               Cancel
             </button>
           </td>

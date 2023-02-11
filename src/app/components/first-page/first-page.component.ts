@@ -14,25 +14,23 @@ export class FirstPageComponent implements OnInit {
   temp: any = []
   selEdit = -1
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder) {
-    this.tableForm = fb.group({
-      addForm: fb.group({
-        title: ['', Validators.required],
-        content: ['', Validators.required],
-      }),
-      editForm: fb.group({
+  constructor(public fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.tableForm = this.fb.group({})
+  }
+
+  add() {
+    this.addRecord = true
+    this.tableForm = this.fb.group({
+      addForm: this.fb.group({
         title: ['', Validators.required],
         content: ['', Validators.required],
       }),
     })
   }
-
-  ngOnInit() {}
-
-  add() {
-    this.addRecord = true
-  }
   put() {
+    this.temp = []
     this.temp.title = (this.tableForm.controls[
       'addForm'
     ] as any).controls.title.value
@@ -44,9 +42,18 @@ export class FirstPageComponent implements OnInit {
   }
   edit(i: number) {
     this.selEdit = i
+    this.tableForm = this.fb.group({
+      editForm: this.fb.group({
+        title: [this.dataArray[i].title, Validators.required],
+        content: [this.dataArray[i].content, Validators.required],
+      }),
+    })
   }
-  cancel() {
+  addCancel() {
     this.addRecord = false
+  }
+  editCancel() {
+    this.selEdit = -1
   }
   save(i: number) {
     this.dataArray[i].title = (this.tableForm.controls[
