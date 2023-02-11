@@ -35,15 +35,15 @@ export class FirstPageComponent implements OnInit {
   }
   put() {
     this.temp = []
-    this.temp.title = (this.tableForm.controls[
-      'addForm'
-    ] as any).controls.title.value
+    console.log(this.tableForm)
+    this.temp.title = (this.tableForm.controls['addForm'] as any).value.title
     this.temp.content = (this.tableForm.controls[
       'addForm'
-    ] as any).controls.content.value
+    ] as any).value.content
     this.dataArray.push(this.temp)
     this.addRecord = false
   }
+
   edit(i: number) {
     this.selEdit = i
     this.tableForm = this.fb.group({
