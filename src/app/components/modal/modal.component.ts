@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-// import 'rxjs/add/operator/filter'
-// import { filter } from 'rxjs'
 
 @Component({
   selector: 'app-modal',
