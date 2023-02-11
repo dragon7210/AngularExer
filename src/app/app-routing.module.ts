@@ -7,7 +7,7 @@ import { SecondPageComponent } from './components/second-page/second-page.compon
 
 const routes: Routes = [
   {
-    path: 'modal/:id',
+    path: 'modal',
     component: ModalComponent,
   },
   {

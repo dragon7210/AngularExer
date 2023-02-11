@@ -9,16 +9,12 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  id: any = {}
-
+  id: number = 0
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
-    this.route.params.subscribe((event: any) => {
-      this.id = event.id
-    })
     this.route.queryParamMap.subscribe((params: any) => {
       const temp = { ...params.params }
-      console.log(temp.order)
+      this.id = temp.order
     })
   }
 }
