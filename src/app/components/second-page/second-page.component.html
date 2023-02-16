@@ -1,1 +1,17 @@
-<div class="p-4">second</div>
+<div class="d-flex justify-content-end">
+  <input
+    type="file"
+    class="file-input"
+    style="display: none"
+    (change)="incomingfile($event)"
+    #fileUpload
+  />
+</div>
+<div class="mt-4 flex justify-end mx-4">
+  <p class="text-black my-auto mx-2">
+    {{ fileName || "No file uploaded yet." }}
+  </p>
+  <button class="bg-[blue] px-4 py-2 rounded-lg" (click)="fileUpload.click()">
+    <p class="text-white my-0">Click here to upload your file.</p>
+  </button>
+</div>
