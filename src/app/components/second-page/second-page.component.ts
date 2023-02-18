@@ -31,7 +31,6 @@ export class SecondPageComponent implements OnInit {
       var worksheet = workbook.Sheets[first_sheet_name]
       this.dataArray = XLSX.utils.sheet_to_json(worksheet, { header: 1 })
       this.dataArray[0].shift()
-      console.log(this.dataArray[0])
     }
     fileReader.readAsArrayBuffer(this.file)
   }
