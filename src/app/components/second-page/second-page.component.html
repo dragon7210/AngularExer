@@ -16,16 +16,20 @@
   </button>
 </div>
 <div class="px-5 py-3">
-  <table class="table table-auto">
+  <table class="w-[100%]" *ngIf="dataArray.length > 0">
     <thead>
-      <tr>
+      <tr class="py-3">
         <th>No</th>
         <th>Title</th>
         <th>Contenct</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of dataArray"></tr>
+      <tr *ngFor="let data of dataArray; index as i" class="text-center">
+        <td class="py-3">{{ i + 1 }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.content }}</td>
+      </tr>
     </tbody>
   </table>
 </div>
