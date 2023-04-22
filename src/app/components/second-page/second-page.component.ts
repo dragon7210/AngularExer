@@ -48,12 +48,10 @@ export class SecondPageComponent implements OnInit {
 
     modalRef.componentInstance.onConfirm.subscribe(() => {
       alert('123')
-      // handle confirm action
     })
 
     modalRef.componentInstance.onCancel.subscribe(() => {
-      alert(456)
-      // handle cancel action
+      alert('456')
     })
   }
 }
