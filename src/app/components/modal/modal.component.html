@@ -1,4 +1,20 @@
-<div class="p-4">
-  <p>modal{{ id }} works!</p>
-  <button class="bg-[blue] px-4 py-2 rounded-lg" (click)="back()">Back</button>
+<div class="modal bg-gray-200 rounded-xl p-5">
+  <div class="flex justify-end">
+    <button type="button" class="close" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <p>{{ message }}</p>
+  <div class="flex justify-end text-white">
+    <button
+      type="button"
+      class="bg-red-500 rounded-sm p-2 mr-5"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+    <button type="button" class="bg-[blue] rounded-sm p-2" (click)="confirm()">
+      Confirm
+    </button>
+  </div>
 </div>
