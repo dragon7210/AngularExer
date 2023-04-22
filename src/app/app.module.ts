@@ -15,20 +15,21 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import { CalendarModule } from 'primeng/calendar'
-import { DropdownModule } from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown'
 import { ToastService, AngularToastifyModule } from 'angular-toastify'
-import { ModalComponent } from './components/modal/modal.component'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-
+import { DemoPipe } from './pipe/tempPipe';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FirstPageComponent,
     SecondPageComponent,
-    ModalComponent,
     PageNotFoundComponent,
+    DemoPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

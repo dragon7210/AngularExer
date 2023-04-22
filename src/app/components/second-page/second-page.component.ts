@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { ModalComponent } from '../modal/modal.component'
 import * as XLSX from 'xlsx'
 @Component({
   selector: 'app-second-page',
@@ -9,14 +11,16 @@ export class SecondPageComponent implements OnInit {
   file: any
   fileName: string = ''
   arrayBuffer: any
+  value: any
   dataArray: any = []
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit() {}
 
   incomingfile(event: any) {
     this.file = event.target.files[0]
+    this.value = ''
     this.fileName = this.file.name
     let fileReader = new FileReader()
     fileReader.onload = () => {
@@ -26,11 +30,30 @@ export class SecondPageComponent implements OnInit {
       for (var i = 0; i != data.length; ++i)
         arr[i] = String.fromCharCode(data[i])
       var bstr = arr.join('')
-      var workbook = XLSX.read(bstr, { type: 'binary', cellDates: true })
+      var workbook = XLSX.read(bstr, { type: 'binary', cellDates: false })
       var first_sheet_name = workbook.SheetNames[0]
       var worksheet = workbook.Sheets[first_sheet_name]
       this.dataArray = XLSX.utils.sheet_to_json(worksheet)
+      console.log(this.dataArray)
     }
     fileReader.readAsArrayBuffer(this.file)
+  }
+  openModal() {
+    const modalRef = this.modalService.open(ModalComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    })
+    modalRef.componentInstance.title = 'Confirm action'
+    modalRef.componentInstance.message = 'Are you sure you want to do this?'
+
+    modalRef.componentInstance.onConfirm.subscribe(() => {
+      alert('123')
+      // handle confirm action
+    })
+
+    modalRef.componentInstance.onCancel.subscribe(() => {
+      alert(456)
+      // handle cancel action
+    })
   }
 }

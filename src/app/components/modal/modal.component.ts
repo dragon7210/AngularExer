@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  id: number = 0
-  constructor(private route: ActivatedRoute, private router: Router) {}
-  ngOnInit() {
-    this.route.queryParamMap.subscribe((params: any) => {
-      const temp = { ...params.params }
-      this.id = temp.order
-    })
+  @Input() title: string | undefined
+  @Input() message: string | undefined
+  @Output() onConfirm = new EventEmitter()
+  @Output() onCancel = new EventEmitter()
+  constructor(
+    private modalService: NgbModal,
+    public activeModal: NgbActiveModal,
+  ) {}
+  ngOnInit(): void {}
+  confirm() {
+    this.activeModal.close()
+    this.onConfirm.emit()
   }
-  back() {
-    this.router.navigate(['/first'])
+  cancel() {
+    this.activeModal.dismiss()
+    this.onCancel.emit()
   }
 }

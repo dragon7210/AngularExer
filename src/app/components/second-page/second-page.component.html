@@ -4,6 +4,7 @@
     class="file-input"
     style="display: none"
     (change)="incomingfile($event)"
+    [(ngModel)]="value"
     #fileUpload
   />
 </div>
@@ -15,6 +16,9 @@
     <p class="text-white my-0">Click here to upload your file.</p>
   </button>
 </div>
+<button class="bg-[blue] px-4 py-2 rounded-lg" (click)="openModal()">
+  <p class="text-white my-0">Open Modal</p>
+</button>
 <div class="px-5 py-3">
   <table class="w-[100%]" *ngIf="dataArray.length > 0">
     <thead>
@@ -27,8 +31,12 @@
     <tbody>
       <tr *ngFor="let data of dataArray; index as i" class="text-center">
         <td class="py-3">{{ i + 1 }}</td>
-        <td>{{ data.title }}</td>
-        <td>{{ data.content }}</td>
+        <td>
+          {{ data | objectFilter : 1 }}
+        </td>
+        <td>
+          {{ data | objectFilter : 2 }}
+        </td>
       </tr>
     </tbody>
   </table>
