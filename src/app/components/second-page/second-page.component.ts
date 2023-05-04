@@ -45,13 +45,7 @@ export class SecondPageComponent implements OnInit {
     })
     modalRef.componentInstance.title = 'Confirm action'
     modalRef.componentInstance.message = 'Are you sure you want to do this?'
-
-    modalRef.componentInstance.onConfirm.subscribe(() => {
-      alert('123')
-    })
-
-    modalRef.componentInstance.onCancel.subscribe(() => {
-      alert('456')
-    })
+    modalRef.componentInstance.onConfirm.subscribe(() => {})
+    modalRef.componentInstance.onCancel.subscribe(() => {})
   }
 }

@@ -23,6 +23,9 @@
               {{ data.content }}
             </td>
             <td>
+              {{ data.result }}
+            </td>
+            <td>
               <button
                 class="bg-[green] px-4 py-2 rounded-lg mr-5 text-white"
                 (click)="edit(i)"
@@ -91,6 +94,7 @@
               class="py-2 px-4 w-full focus:outline-none rounded-md"
             />
           </td>
+
           <td class="flex justify-center">
             <button
               class="bg-[green] px-4 py-2 rounded-lg mr-5 text-white"

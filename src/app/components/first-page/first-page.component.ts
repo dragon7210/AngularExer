@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 export class FirstPageComponent implements OnInit {
   addRecord = false
   tableForm!: FormGroup
-  dataArray = [{ title: 'john', content: 'test' }]
+  dataArray = [{ title: 'john', content: 'test', result: 1 }]
   temp: any = []
   selEdit = -1
 
@@ -35,11 +35,11 @@ export class FirstPageComponent implements OnInit {
   }
   put() {
     this.temp = []
-    console.log(this.tableForm)
     this.temp.title = (this.tableForm.controls['addForm'] as any).value.title
     this.temp.content = (this.tableForm.controls[
       'addForm'
     ] as any).value.content
+    this.temp.result = this.temp.title * this.temp.content
     this.dataArray.push(this.temp)
     this.addRecord = false
   }
